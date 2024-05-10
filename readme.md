@@ -1,4 +1,4 @@
-## Quick Installation
+### Quick Installation
 
 Install the template dependencies by running the `install` command:
 
@@ -14,52 +14,57 @@ box server start
 
 Code to your liking and enjoy!
 
-## Database Scripts
+### Database Scripts
 ```sql
-    create table ContentItem
-    (
-     id   int auto_increment
-      primary key,
-     name varchar(25) not null
-    );
+create table ContentItem
+(
+    id   int auto_increment
+        primary key,
+    name varchar(25) not null
+);
 
-    create table LangTypes
-    (
-     id          int auto_increment
-      primary key,
-     code        varchar(10)  null,
-     description varchar(255) null
-    );
+create table LangTypes
+(
+    id          int auto_increment
+        primary key,
+    code        varchar(10)  null,
+    description varchar(255) null
+);
 
-    create table Page
-    (
-     id   int auto_increment
-      primary key,
-     page varchar(255) null
-    );
+create table Page
+(
+    id   int auto_increment
+        primary key,
+    page varchar(255) null,
+    constraint Page_page_uindex
+        unique (page) comment 'No duplicate page names'
+);
 
-    create table PageContentItem
-    (
-     pageId        int not null,
-     contentItemId int not null,
-     constraint PageContentItem_ContentItem_id_fk
-      foreign key (contentItemId) references ContentItem (id),
-     constraint PageContentItem_Page_id_fk
-      foreign key (pageId) references Page (id)
-    );
+create table PageContentItem
+(
+    pageId        int not null,
+    contentItemId int not null,
+    primary key (pageId, contentItemId),
+    constraint PageContentItem_ContentItem_id_fk
+        foreign key (contentItemId) references ContentItem (id),
+    constraint PageContentItem_Page_id_fk
+        foreign key (pageId) references Page (id)
+);
 
-    create table TranslatedItem
-    (
-     id            int auto_increment
-      primary key,
-     ContentItemId int  not null,
-     LangTypeId    int  not null,
-     value         text not null,
-     constraint TranslatedItem_ContentItem_id_fk
-      foreign key (ContentItemId) references ContentItem (id),
-     constraint TranslatedItem_LangTypes_id_fk
-      foreign key (LangTypeId) references LangTypes (id)
-    );
+create table TranslatedItem
+(
+    id            int auto_increment
+        primary key,
+    contentItemId int  not null,
+    langTypeId    int  not null,
+    value         text not null,
+    constraint TranslatedItem_ContentItem_id_fk
+        foreign key (contentItemId) references ContentItem (id),
+    constraint TranslatedItem_LangTypes_id_fk
+        foreign key (langTypeId) references LangTypes (id)
+);
+
+
 ```
 
 ### THE DAILY BREAD
