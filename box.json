@@ -28,14 +28,12 @@
         "testbox":"testbox/",
         "cbcontent":"modules/cbcontent/",
         "cbvalidation":"modules/cbvalidation/",
-        "cbdebugger":"modules/cbdebugger/",
         "qb":"modules/qb/"
     },
     "dependencies":{
         "coldbox":"^7.0.0",
         "cbcontent":"0.0.2",
         "cbvalidation":"^4.4.0+26",
-        "cbdebugger":"^4.2.0+4",
         "qb":"^9.10.0"
     },
     "scripts":{

@@ -4,7 +4,7 @@ const LSApp = function() {
 
 	return {
 		init: function(){
-
+			console.log(`Here`)
 		}
 	}
 }()
