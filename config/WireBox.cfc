@@ -23,7 +23,7 @@ component extends="coldbox.system.ioc.config.Binder" {
 			// Custom Storage Scopes
 			customScopes   : {},
 			// Package scan locations
-			scanLocations  : [ "models", "models.services" ],
+			scanLocations  : [ "models" ],
 			// Stop Recursions
 			stopRecursions : [],
 			// Parent Injector to assign to the configured injector, this must be an object reference

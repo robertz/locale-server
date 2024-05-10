@@ -1,8 +1,6 @@
 component extends="coldbox.system.EventHandler" {
 
-	// function preHandler( event, rc, prc, action, eventArguments ){
-	// 	prc[ "langCode" ] = rc.keyExists( "langCode" ) ? rc.langCode : "en";
-	// }
+	property name="ContentService" inject;
 
 	/**
 	 * Default Action
@@ -11,6 +9,8 @@ component extends="coldbox.system.EventHandler" {
 		// content pages to load for the current view
 		arguments.prc[ "page" ]     = "global";
 		arguments.prc[ "langCode" ] = arguments.rc.keyExists( "langCode" ) ? arguments.rc.langCode : "en";
+
+		arguments.prc[ "all" ] = ContentService.listAll();
 
 		event.setView( "main/index" );
 	}
