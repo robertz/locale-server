@@ -51,7 +51,7 @@ component {
 			)
 			.join( "LangTypes LT", "LT.id", "=", "TI.langTypeId" )
 			.subSelect( "pages", function( q ){
-				q.selectRaw( "CONCAT(P.page)" )
+				q.selectRaw( "GROUP_CONCAT(P.page)" )
 					.from( "PageContentItem PCI" )
 					.join( "Page P", "P.id", "=", "PCI.pageId" )
 					.whereColumn( "PCI.contentItemId", "CI.id" )
